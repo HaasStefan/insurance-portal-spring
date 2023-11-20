@@ -1,6 +1,5 @@
 package com.ngjournal.insuranceportal.controller;
 
-import com.ngjournal.insuranceportal.domain.Customer;
 import com.ngjournal.insuranceportal.model.CustomerDto;
 import com.ngjournal.insuranceportal.service.CustomerService;
 import org.springframework.web.bind.annotation.*;
