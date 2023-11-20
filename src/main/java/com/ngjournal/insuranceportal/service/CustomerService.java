@@ -16,6 +16,15 @@ public class CustomerService {
         this.modelMapper = modelMapper;
     }
 
+    public CustomerDto[] getAll() {
+        return modelMapper.map(customerRepository.findAll(), CustomerDto[].class);
+    }
+
+    public CustomerDto get(String id) {
+        // todo not found exception
+        return modelMapper.map(customerRepository.findById(id).orElseThrow(), CustomerDto.class);
+    }
+
     public CustomerDto create(final CustomerDto customerDto) {
         Customer customer = modelMapper.map(customerDto, Customer.class);
         return modelMapper.map(customerRepository.save(customer), CustomerDto.class);

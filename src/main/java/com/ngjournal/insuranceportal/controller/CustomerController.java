@@ -2,10 +2,11 @@ package com.ngjournal.insuranceportal.controller;
 
 import com.ngjournal.insuranceportal.model.CustomerDto;
 import com.ngjournal.insuranceportal.service.CustomerService;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v1/customer")
+@RequestMapping("/api/v1/customers")
 public class CustomerController {
     private final CustomerService customerService;
 
@@ -17,5 +18,15 @@ public class CustomerController {
     @ResponseStatus(code = org.springframework.http.HttpStatus.CREATED)
     public CustomerDto createCustomer(@RequestBody CustomerDto customer) {
         return customerService.create(customer);
+    }
+
+    @GetMapping
+    public CustomerDto[] getAllCustomers() {
+        return customerService.getAll();
+    }
+
+    @GetMapping("/{id}")
+    public CustomerDto getCustomer(@PathVariable String id) {
+        return customerService.get(id);
     }
 }
